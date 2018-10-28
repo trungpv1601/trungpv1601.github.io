@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Khi load javascript trong trang HTML, bạn cần cẩn thận nếu không muốn làm ảnh hưởng tới tốc độ load trang. Tuỳ vào chỗ bạn đặt thẻ &amp;lt;script&amp;gt; (trong thẻ &amp;lt;head&amp;gt; hay ở cuối trang) sẽ đều ảnh h">
+<meta name="keywords" content="javascript,js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cách dùng defer và async hiệu quả khi load javascript">
+<meta property="og:url" content="https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/index.html">
+<meta property="og:site_name" content="trungpv">
+<meta property="og:description" content="Khi load javascript trong trang HTML, bạn cần cẩn thận nếu không muốn làm ảnh hưởng tới tốc độ load trang. Tuỳ vào chỗ bạn đặt thẻ &amp;lt;script&amp;gt; (trong thẻ &amp;lt;head&amp;gt; hay ở cuối trang) sẽ đều ảnh h">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/without-defer-async-head.png">
+<meta property="og:image" content="https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/without-defer-async-body.png">
+<meta property="og:image" content="https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/with-async.png">
+<meta property="og:image" content="https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/with-defer.png">
+<meta property="og:updated_time" content="2018-10-28T06:56:08.967Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cách dùng defer và async hiệu quả khi load javascript">
+<meta name="twitter:description" content="Khi load javascript trong trang HTML, bạn cần cẩn thận nếu không muốn làm ảnh hưởng tới tốc độ load trang. Tuỳ vào chỗ bạn đặt thẻ &amp;lt;script&amp;gt; (trong thẻ &amp;lt;head&amp;gt; hay ở cuối trang) sẽ đều ảnh h">
+<meta name="twitter:image" content="https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/without-defer-async-head.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Cách dùng defer và async hiệu quả khi load javascript</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/trungpv1601">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2018/10/28/Composer-Cai-nhung-package-ma-ban-fork-tu-Github/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&text=Cách dùng defer và async hiệu quả khi load javascript"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&title=Cách dùng defer và async hiệu quả khi load javascript"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&is_video=false&description=Cách dùng defer và async hiệu quả khi load javascript"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Cách dùng defer và async hiệu quả khi load javascript&body=Check out this article: https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&title=Cách dùng defer và async hiệu quả khi load javascript"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&title=Cách dùng defer và async hiệu quả khi load javascript"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&title=Cách dùng defer và async hiệu quả khi load javascript"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&title=Cách dùng defer và async hiệu quả khi load javascript"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&name=Cách dùng defer và async hiệu quả khi load javascript&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Vi-tri-dat-the-lt-script-gt"><span class="toc-number">1.</span> <span class="toc-text">1. Vị trí đặt thẻ &lt;script&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ASYNC-va-DEFER"><span class="toc-number">2.</span> <span class="toc-text">2. ASYNC và DEFER</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-So-sanh-hieu-suat"><span class="toc-number">3.</span> <span class="toc-text">3. So sánh hiệu suất</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-Khong-async-va-defer-dat-trong-lt-head-gt"><span class="toc-number">3.1.</span> <span class="toc-text">a. Không async và defer, đặt trong &lt;head&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b-Khong-async-va-defer-dat-trong-lt-body-gt"><span class="toc-number">3.2.</span> <span class="toc-text">b. Không async và defer, đặt trong &lt;body&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-Dung-async-dat-trong-lt-head-gt"><span class="toc-number">3.3.</span> <span class="toc-text">c. Dùng async, đặt trong &lt;head&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d-Dung-defer-dat-trong-lt-head-gt"><span class="toc-number">3.4.</span> <span class="toc-text">d. Dùng defer, đặt trong &lt;head&gt;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Nguon"><span class="toc-number">4.</span> <span class="toc-text">4. Nguồn</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Cách dùng defer và async hiệu quả khi load javascript
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">trungpv</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-10-28T04:25:07.000Z" itemprop="datePublished">2018-10-28</time>
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript/">javascript</a>, <a class="tag-link" href="/tags/js/">js</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Khi load javascript trong trang HTML, bạn cần cẩn thận nếu không muốn làm ảnh hưởng tới tốc độ load trang. Tuỳ vào chỗ bạn đặt thẻ <code>&lt;script&gt;</code> (trong thẻ <code>&lt;head&gt;</code> hay ở cuối trang) sẽ đều ảnh hưởng tới thời gian tải trang.</p>
+<p>Bình thường bạn sẽ dùng đoạn code bên dưới để load file js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Bất cứ khi nào HTML parser tìm thấy dòng code trên nó sẽ tải xuốn và thự thi script đó.</p>
+<p>Mỗi lần load như vậy thì HTML trong trang sẽ được phân tích cho nên nó tốn rất nhiều thời gian và ảnh hưởng rất lớn tới việc load trang.</p>
+<p>Nếu việc load script mất nhiều thời gian hơn, ví dụ khi mạng chậm thì việc chờ load xong script thì phần còn lại của HTML trên page mới được render thì người dùng sẽ nhìn thấy một trang trống không. Việc này rất khó chịu với việc trải nghiệm.</p>
+<hr>
+<h2 id="1-Vi-tri-dat-the-lt-script-gt"><a href="#1-Vi-tri-dat-the-lt-script-gt" class="headerlink" title="1. Vị trí đặt thẻ &lt;script&gt;"></a>1. Vị trí đặt thẻ <code>&lt;script&gt;</code></h2><p>Khi bạn học về HTML thì sẽ được dạy đặt thẻ <code>&lt;script&gt;</code> trong thẻ <code>&lt;head&gt;</code> như vầy:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    ...</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>Như đã phân tích ở trên, mỗi lần gặp thẻ <code>&lt;script&gt;</code> thì nó phải load và thực thi xong. Thì phần <code>&lt;body&gt;</code> mới được load.</p>
+<p>Điều này không tốt vì phải chờ khi vào trang. Điều này cũng có thể giải quyết bằng cách đưa nó xuống cuối trước thẻ <code>&lt;/body&gt;</code>.</p>
+<p>Làm như vậy thì sẽ tối ưu rất nhiều trong việc load trang. HTML sẽ được load hết rồi sau đó javascript mới load.</p>
+<p>Cách này là cách tốt nhất để để tối ưu việc load trang dành cho các trình duyệt cũ không hỗ trợ chức năng <code>async</code> và <code>defer</code>.</p>
+<h2 id="2-ASYNC-va-DEFER"><a href="#2-ASYNC-va-DEFER" class="headerlink" title="2. ASYNC và DEFER"></a>2. ASYNC và DEFER</h2><p>async và defer là 2 thuộc tính boolean. Chúng được dùng như sau:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script async src=&quot;script.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script defer src=&quot;script.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>Hai thuộc tính này chỉ hiểu khi ta đặt trong thẻ <code>&lt;head&gt;</code>. Nếu đặt trong <code>&lt;body&gt;</code> sẽ không có tác dụng.</p>
+<h2 id="3-So-sanh-hieu-suat"><a href="#3-So-sanh-hieu-suat" class="headerlink" title="3. So sánh hiệu suất"></a>3. So sánh hiệu suất</h2><h3 id="a-Khong-async-va-defer-dat-trong-lt-head-gt"><a href="#a-Khong-async-va-defer-dat-trong-lt-head-gt" class="headerlink" title="a. Không async và defer, đặt trong &lt;head&gt;"></a>a. Không async và defer, đặt trong <code>&lt;head&gt;</code></h3><p>Hình bên dưới mô tả việc load script không dùng async và defer. Được đặt trong thẻ <code>&lt;head&gt;</code>.</p>
+<img src="/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/without-defer-async-head.png">
+<p>Như các bạn thấy thì sẽ mất khoảng thời gian chờ cho đến khi js được load xong thì HTML mới được load tiếp.</p>
+<h3 id="b-Khong-async-va-defer-dat-trong-lt-body-gt"><a href="#b-Khong-async-va-defer-dat-trong-lt-body-gt" class="headerlink" title="b. Không async và defer, đặt trong &lt;body&gt;"></a>b. Không async và defer, đặt trong <code>&lt;body&gt;</code></h3><p>Hình bên dưới mô tả việc load script không dùng async và defer. Được đặt trên thẻ đóng <code>&lt;/body&gt;</code>.</p>
+<img src="/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/without-defer-async-body.png">
+<p>Việc load sẽ không bị chờ script được load và thực thi. Khi đó thì trang sẽ đuọc hiển thị ngay khi truy cập và không hiển thị trang trắng như ví dụ trước.</p>
+<h3 id="c-Dung-async-dat-trong-lt-head-gt"><a href="#c-Dung-async-dat-trong-lt-head-gt" class="headerlink" title="c. Dùng async, đặt trong &lt;head&gt;"></a>c. Dùng async, đặt trong <code>&lt;head&gt;</code></h3><p>Hình bên dưới mô tả việc load script dùng async. Được đặt trong thẻ <code>&lt;head&gt;</code>.</p>
+<img src="/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/with-async.png">
+<p>Script được tải xuống đồng bộ và chỉ chờ khi script thực thi.</p>
+<h3 id="d-Dung-defer-dat-trong-lt-head-gt"><a href="#d-Dung-defer-dat-trong-lt-head-gt" class="headerlink" title="d. Dùng defer, đặt trong &lt;head&gt;"></a>d. Dùng defer, đặt trong <code>&lt;head&gt;</code></h3><p>Hình bên dưới mô tả việc load script dùng defer. Được đặt trong thẻ <code>&lt;head&gt;</code>.</p>
+<img src="/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/with-defer.png">
+<p>Script sẽ được tải xuống đồng bộ với quá trình parse HTML và chỉ thực khi khi HTML đuọc parse xong.</p>
+<p>Việc này cũng giống như việc ta dùng cách đưa tất cả <code>&lt;script&gt;</code> xuống trước thẻ đóng <code>&lt;/body&gt;</code>.</p>
+<p>Nhưng chỉ khác là nó đã được tải xuống trước đó rồi và không phải mất thời gian tải nữa mà thực thi luôn.</p>
+<p>So cool! 🏆</p>
+<h2 id="4-Nguon"><a href="#4-Nguon" class="headerlink" title="4. Nguồn"></a>4. Nguồn</h2><ul>
+<li><a href="https://flaviocopes.com/javascript-async-defer/" target="_blank" rel="noopener">EFFICIENTLY LOAD JAVASCRIPT WITH DEFER AND ASYNC</a></li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/trungpv1601">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Vi-tri-dat-the-lt-script-gt"><span class="toc-number">1.</span> <span class="toc-text">1. Vị trí đặt thẻ &lt;script&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ASYNC-va-DEFER"><span class="toc-number">2.</span> <span class="toc-text">2. ASYNC và DEFER</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-So-sanh-hieu-suat"><span class="toc-number">3.</span> <span class="toc-text">3. So sánh hiệu suất</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-Khong-async-va-defer-dat-trong-lt-head-gt"><span class="toc-number">3.1.</span> <span class="toc-text">a. Không async và defer, đặt trong &lt;head&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b-Khong-async-va-defer-dat-trong-lt-body-gt"><span class="toc-number">3.2.</span> <span class="toc-text">b. Không async và defer, đặt trong &lt;body&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-Dung-async-dat-trong-lt-head-gt"><span class="toc-number">3.3.</span> <span class="toc-text">c. Dùng async, đặt trong &lt;head&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d-Dung-defer-dat-trong-lt-head-gt"><span class="toc-number">3.4.</span> <span class="toc-text">d. Dùng defer, đặt trong &lt;head&gt;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Nguon"><span class="toc-number">4.</span> <span class="toc-text">4. Nguồn</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&text=Cách dùng defer và async hiệu quả khi load javascript"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&title=Cách dùng defer và async hiệu quả khi load javascript"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&is_video=false&description=Cách dùng defer và async hiệu quả khi load javascript"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Cách dùng defer và async hiệu quả khi load javascript&body=Check out this article: https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&title=Cách dùng defer và async hiệu quả khi load javascript"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&title=Cách dùng defer và async hiệu quả khi load javascript"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&title=Cách dùng defer và async hiệu quả khi load javascript"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&title=Cách dùng defer và async hiệu quả khi load javascript"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://trungpv1601.github.io/2018/10/28/Cach-dung-defer-va-async-hieu-qua-khi-load-javascript/&name=Cách dùng defer và async hiệu quả khi load javascript&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 trungpv
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/trungpv1601">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-107412116-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
