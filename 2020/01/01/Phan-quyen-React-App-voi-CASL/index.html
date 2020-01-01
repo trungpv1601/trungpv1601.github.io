@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Phân quyền React App với CASL1. Giới thiệu Home Page Github  Một số Framework hỗ trợ:  @casl/vue cho Vue @casl/react cho React @casl/angular cho Angular 2+ @casl/aurelia cho Aurelia  2. Cấu hình cho R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Phân quyền React App với CASL">
+<meta property="og:url" content="https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/index.html">
+<meta property="og:site_name" content="trungpv">
+<meta property="og:description" content="Phân quyền React App với CASL1. Giới thiệu Home Page Github  Một số Framework hỗ trợ:  @casl/vue cho Vue @casl/react cho React @casl/angular cho Angular 2+ @casl/aurelia cho Aurelia  2. Cấu hình cho R">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-01-01T04:15:16.870Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Phân quyền React App với CASL">
+<meta name="twitter:description" content="Phân quyền React App với CASL1. Giới thiệu Home Page Github  Một số Framework hỗ trợ:  @casl/vue cho Vue @casl/react cho React @casl/angular cho Angular 2+ @casl/aurelia cho Aurelia  2. Cấu hình cho R">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Phân quyền React App với CASL</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/trungpv1601">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/03/23/Cau-hinh-tu-dong-deploy-PHP/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&text=Phân quyền React App với CASL"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&title=Phân quyền React App với CASL"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&is_video=false&description=Phân quyền React App với CASL"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Phân quyền React App với CASL&body=Check out this article: https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&title=Phân quyền React App với CASL"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&title=Phân quyền React App với CASL"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&title=Phân quyền React App với CASL"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&title=Phân quyền React App với CASL"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&name=Phân quyền React App với CASL&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Phan-quyen-React-App-voi-CASL"><span class="toc-number">1.</span> <span class="toc-text">Phân quyền React App với CASL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Gioi-thieu"><span class="toc-number">1.1.</span> <span class="toc-text">1. Giới thiệu</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Cau-hinh-cho-Reactjs"><span class="toc-number">1.2.</span> <span class="toc-text">2. Cấu hình cho Reactjs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-Cai-dat-packages"><span class="toc-number">1.2.1.</span> <span class="toc-text">a. Cài đặt packages</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b-Code"><span class="toc-number">1.2.2.</span> <span class="toc-text">b. Code</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Can-js"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">Can.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ability-js"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">ability.js</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-Tich-hop-vao-project"><span class="toc-number">1.2.3.</span> <span class="toc-text">c. Tích hợp vào project</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cach-1"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">* Cách 1:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cach-2"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">* Cách 2:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d-Cach-dung-View-More"><span class="toc-number">1.2.4.</span> <span class="toc-text">d. Cách dùng View More:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Credit"><span class="toc-number">1.3.</span> <span class="toc-text">3. Credit:</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Phân quyền React App với CASL
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">trungpv</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2020-01-01T04:15:02.000Z" itemprop="datePublished">2020-01-01</time>
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Phan-quyen-React-App-voi-CASL"><a href="#Phan-quyen-React-App-voi-CASL" class="headerlink" title="Phân quyền React App với CASL"></a>Phân quyền React App với CASL</h1><h2 id="1-Gioi-thieu"><a href="#1-Gioi-thieu" class="headerlink" title="1. Giới thiệu"></a>1. Giới thiệu</h2><ul>
+<li><a href="https://stalniy.github.io/casl/" target="_blank" rel="noopener">Home Page</a></li>
+<li><a href="https://github.com/stalniy/casl" target="_blank" rel="noopener">Github</a></li>
+</ul>
+<p>Một số Framework hỗ trợ:</p>
+<ul>
+<li><a href="https://github.com/stalniy/casl/tree/master/packages/casl-vue" target="_blank" rel="noopener">@casl/vue</a> cho Vue</li>
+<li><a href="https://github.com/stalniy/casl/tree/master/packages/casl-react" target="_blank" rel="noopener">@casl/react</a> cho React</li>
+<li><a href="https://github.com/stalniy/casl/tree/master/packages/casl-angular" target="_blank" rel="noopener">@casl/angular</a> cho Angular 2+</li>
+<li><a href="https://github.com/stalniy/casl/tree/master/packages/casl-aurelia" target="_blank" rel="noopener">@casl/aurelia</a> cho Aurelia</li>
+</ul>
+<h2 id="2-Cau-hinh-cho-Reactjs"><a href="#2-Cau-hinh-cho-Reactjs" class="headerlink" title="2. Cấu hình cho Reactjs"></a>2. Cấu hình cho Reactjs</h2><blockquote>
+<p>Đọc thêm README.MD nếu chưa thoả mãn <a href="https://github.com/stalniy/casl/tree/master/packages/casl-react" target="_blank" rel="noopener">https://github.com/stalniy/casl/tree/master/packages/casl-react</a></p>
+</blockquote>
+<blockquote>
+<p>Đây cũng có project mẫu cho react: <a href="https://github.com/stalniy/casl-react-example" target="_blank" rel="noopener">https://github.com/stalniy/casl-react-example</a></p>
+</blockquote>
+<h3 id="a-Cai-dat-packages"><a href="#a-Cai-dat-packages" class="headerlink" title="a. Cài đặt packages"></a>a. Cài đặt packages</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @casl/react @casl/ability</span><br></pre></td></tr></table></figure>
+<h3 id="b-Code"><a href="#b-Code" class="headerlink" title="b. Code"></a>b. Code</h3><p>Đầu tiên ta cần định nghĩa 2 files là file cấu hình <code>ability.js</code> và file component <code>Can.js</code>. Đặt files ở đâu thì tham khảo <a href="http://react-file-structure.surge.sh/" target="_blank" rel="noopener">How to structure React project</a> bởi anh Dan Abramov :).</p>
+<h4 id="Can-js"><a href="#Can-js" class="headerlink" title="Can.js"></a>Can.js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createCanBoundTo &#125; from &quot;@casl/react&quot;</span><br><span class="line">import ability from &quot;./ability&quot;</span><br><span class="line"></span><br><span class="line">export default createCanBoundTo(ability)</span><br></pre></td></tr></table></figure>
+<p>Đây là component để kiểm tra user hiện tại có quyền và hiển thị những thứ mình muốn ra hay không<br>Ví dụ:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import Can from &apos;./Can&apos;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">const Setting = (&#123; classes &#125;) =&gt; (</span><br><span class="line">&lt;Buttons&gt;</span><br><span class="line">    &lt;Can I=&quot;can&quot; a=&quot;Shutdown&quot;&gt;</span><br><span class="line">      &#123;() =&gt; &lt;Button onClick=&#123;this.handleShutdown&#125; /&gt;&#125;</span><br><span class="line">    &lt;/Can&gt;</span><br><span class="line">&lt;/Buttons&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h4 id="ability-js"><a href="#ability-js" class="headerlink" title="ability.js"></a>ability.js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Ability &#125; from &quot;@casl/ability&quot;;</span><br><span class="line">/**</span><br><span class="line"> * Defines how to detect object&apos;s type: https://stalniy.github.io/casl/abilities/2017/07/20/define-abilities.html</span><br><span class="line"> */</span><br><span class="line">function subjectName(item) &#123;</span><br><span class="line">  if (!item || typeof item === &quot;string&quot;) &#123;</span><br><span class="line">    return item;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return item.__type;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const ability = new Ability([], &#123; subjectName &#125;);</span><br><span class="line"></span><br><span class="line">export default ability;</span><br></pre></td></tr></table></figure>
+<p>Trong này chúng ta cần input vào array rules mà user hiện tại có quyền gì cho ability.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ability.update([&#123;&quot;actions&quot;:&quot;can&quot;,&quot;subject&quot;:[&quot;Shutdown&quot;]&#125;])</span><br></pre></td></tr></table></figure>
+<h3 id="c-Tich-hop-vao-project"><a href="#c-Tich-hop-vao-project" class="headerlink" title="c. Tích hợp vào project"></a>c. Tích hợp vào project</h3><p>Như cách giải thích các yêu cầu ở trên thì chúng ta có thể hardcode permissions cho từng role hoặc lấy từ server sau khi login</p>
+<h4 id="Cach-1"><a href="#Cach-1" class="headerlink" title="* Cách 1:"></a>* Cách 1:</h4><p>Định nghĩa một function và return và array rules</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function defineRulesFor(user) &#123;</span><br><span class="line">  const &#123; role &#125; = user;</span><br><span class="line">  const &#123; can, rules &#125; = AbilityBuilder.extract();</span><br><span class="line">  can(&quot;view&quot;, &quot;Profile&quot;);</span><br><span class="line">  switch (role) &#123;</span><br><span class="line">    case USER_ROLES.TECHNICIAN:</span><br><span class="line">      break;</span><br><span class="line">    case USER_ROLES.SALON_MANAGER:</span><br><span class="line">      break;</span><br><span class="line">    case USER_ROLES.SALON_OWNER:</span><br><span class="line">      can(&quot;reschedule&quot;, &quot;Booking&quot;);</span><br><span class="line">      can(&quot;delete&quot;, &quot;Booking&quot;);</span><br><span class="line">      break;</span><br><span class="line">    case USER_ROLES.SUPPLIER:</span><br><span class="line">      break;</span><br><span class="line"></span><br><span class="line">    default:</span><br><span class="line"></span><br><span class="line">      break;</span><br><span class="line">  &#125;</span><br><span class="line">  return rules;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Cach-2"><a href="#Cach-2" class="headerlink" title="* Cách 2:"></a>* Cách 2:</h4><p>Có thể lấy data remote sau khi login và truyền vào ability</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &apos;react&apos;</span><br><span class="line">import ability from &apos;./ability&apos;</span><br><span class="line"></span><br><span class="line">export class LoginComponent extends Component &#123;</span><br><span class="line">  login(event) &#123;</span><br><span class="line">    event.preventDefault()</span><br><span class="line">    const &#123; email, password &#125; = this.state</span><br><span class="line"></span><br><span class="line">    return fetch(&apos;path/to/api/login&apos;, &#123; method: &apos;POST&apos;, body: JSON.stringify(&#123; email, password &#125;) &#125;)</span><br><span class="line">      .then(response =&gt; response.json())</span><br><span class="line">      .then(session =&gt; ability.update(session.rules))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;form onSubmit=&#123;this.login.bind(this)&#125;&gt;</span><br><span class="line">		...</span><br><span class="line">      &lt;/form&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="d-Cach-dung-View-More"><a href="#d-Cach-dung-View-More" class="headerlink" title="d. Cách dùng View More:"></a>d. Cách dùng <a href="https://github.com/stalniy/casl/tree/master/packages/casl-react#3-property-names-and-aliases" target="_blank" rel="noopener">View More</a>:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Can I=&quot;create&quot; a=&quot;Post&quot;&gt;</span><br><span class="line">  &#123;() =&gt; &lt;button onClick=&#123;...&#125;&gt;Create Post&lt;/button&gt;&#125;</span><br><span class="line">&lt;/Can&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="3-Credit"><a href="#3-Credit" class="headerlink" title="3. Credit:"></a>3. Credit:</h2><ul>
+<li><a href="https://github.com/stalniy/casl/" target="_blank" rel="noopener">https://github.com/stalniy/casl/</a></li>
+<li><a href="https://github.com/stalniy/casl/tree/master/packages/casl-react" target="_blank" rel="noopener">https://github.com/stalniy/casl/tree/master/packages/casl-react</a></li>
+<li><a href="https://dev.to/dwalsh01/managing-user-roles-in-react-using-casl-11f6" target="_blank" rel="noopener">https://dev.to/dwalsh01/managing-user-roles-in-react-using-casl-11f6</a></li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/trungpv1601">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Phan-quyen-React-App-voi-CASL"><span class="toc-number">1.</span> <span class="toc-text">Phân quyền React App với CASL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Gioi-thieu"><span class="toc-number">1.1.</span> <span class="toc-text">1. Giới thiệu</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Cau-hinh-cho-Reactjs"><span class="toc-number">1.2.</span> <span class="toc-text">2. Cấu hình cho Reactjs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-Cai-dat-packages"><span class="toc-number">1.2.1.</span> <span class="toc-text">a. Cài đặt packages</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b-Code"><span class="toc-number">1.2.2.</span> <span class="toc-text">b. Code</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Can-js"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">Can.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ability-js"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">ability.js</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-Tich-hop-vao-project"><span class="toc-number">1.2.3.</span> <span class="toc-text">c. Tích hợp vào project</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cach-1"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">* Cách 1:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cach-2"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">* Cách 2:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d-Cach-dung-View-More"><span class="toc-number">1.2.4.</span> <span class="toc-text">d. Cách dùng View More:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Credit"><span class="toc-number">1.3.</span> <span class="toc-text">3. Credit:</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&text=Phân quyền React App với CASL"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&title=Phân quyền React App với CASL"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&is_video=false&description=Phân quyền React App với CASL"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Phân quyền React App với CASL&body=Check out this article: https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&title=Phân quyền React App với CASL"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&title=Phân quyền React App với CASL"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&title=Phân quyền React App với CASL"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&title=Phân quyền React App với CASL"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://trungpv1601.github.io/2020/01/01/Phan-quyen-React-App-voi-CASL/&name=Phân quyền React App với CASL&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 trungpv
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/trungpv1601">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-107412116-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
